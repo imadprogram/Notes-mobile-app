@@ -30,17 +30,22 @@ jobs:
           mkdir -p www
           cp -r index.html app.js styles.css manifest.json sw.js *.png www/
 
-      - name: Initialize Capacitor Android
+      - name: Initialize Capacitor
         run: |
-          npx cap add android || true
+          npx cap telemetry off
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
           
       - name: Generate App Icons
         run: |
-          cp fountain-pen-close-up.png icon-only.png
-          cp fountain-pen-close-up.png icon-foreground.png
-          npx capacitor-assets generate --android --icon-background-color "#FFD600"
+          mkdir -p assets
+          cp fountain-pen-close-up.png assets/icon-only.png
+          cp fountain-pen-close-up.png assets/icon-foreground.png
+          cp fountain-pen-close-up.png assets/icon-background.png
+          npx @capacitor/assets generate --android --icon-background-color "#FFD600" --assetPath assets
           
-      - name: Sync Capacitor
+      - name: Sync and Update Android
         run: |
           npx cap copy android
           npx cap update android
