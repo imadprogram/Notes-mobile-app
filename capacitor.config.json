@@ -1,6 +1,6 @@
 {
     "appId": "com.emad.pronotes",
     "appName": "Notees",
-    "webDir": ".",
+    "webDir": "www",
     "bundledWebRuntime": false
 }

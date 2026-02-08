@@ -25,9 +25,14 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Prepare Web Assets
+        run: |
+          mkdir -p www
+          cp -r index.html app.js styles.css manifest.json sw.js *.png www/
+
       - name: Initialize Capacitor Android
         run: |
-          npx cap add android
+          npx cap add android || true
           
       - name: Generate App Icons
         run: |
@@ -36,7 +41,9 @@ jobs:
           npx capacitor-assets generate --android --icon-background-color "#FFD600"
           
       - name: Sync Capacitor
-        run: npx cap sync android
+        run: |
+          npx cap copy android
+          npx cap update android
 
       - name: Build APK
         run: |
