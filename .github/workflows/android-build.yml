@@ -42,8 +42,8 @@ jobs:
           mkdir -p assets
           cp fountain-pen-close-up.png assets/icon-only.png
           cp fountain-pen-close-up.png assets/icon-foreground.png
-          cp fountain-pen-close-up.png assets/icon-background.png
-          npx @capacitor/assets generate --android --icon-background-color "#FFD600" --assetPath assets
+          cp icon-background.png assets/icon-background.png
+          npx @capacitor/assets generate --android --assetPath assets
           
       - name: Sync and Update Android
         run: |
