@@ -290,6 +290,12 @@ function getNoteCardColor(color) {
 function openNote(note) {
     currentNoteId = note.id;
 
+    // Push history state so back button closes editor instead of app
+    if (!history.state || !history.state.editing) {
+        history.pushState({ editing: true }, '');
+    }
+
+
     // Set editor color
     editorView.dataset.color = note.color;
 
@@ -477,7 +483,13 @@ function deleteCurrentNote() {
     closeEditor();
 }
 
-function closeEditor() {
+function closeEditor(fromPopState = false) {
+    // If not from back button and we have an editing state, go back
+    if (!fromPopState && history.state && history.state.editing) {
+        history.back();
+        return;
+    }
+
     saveCurrentNote();
 
     // Get current note color for animation
@@ -932,6 +944,13 @@ function initEventListeners() {
             if (editorView.classList.contains('active')) {
                 closeEditor();
             }
+        }
+    });
+
+    // Handle Hardware Back Button / Browser Back
+    window.addEventListener('popstate', (event) => {
+        if (editorView.classList.contains('active')) {
+            closeEditor(true);
         }
     });
 }
