@@ -44,7 +44,8 @@ jobs:
           cp fountain-pen-close-up.png assets/icon-foreground.png
           cp fountain-pen-close-up.png assets/splash.png
           cp icon-background.png assets/icon-background.png
-          npx @capacitor/assets generate --android --assetPath assets --icon-background-color "#FFD600" --splash-background-color "#FFD600"
+          cp splash-background.png assets/splash-background.png
+          npx @capacitor/assets generate --android --assetPath assets
           
       - name: Sync and Update Android
         run: |

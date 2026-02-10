@@ -386,10 +386,7 @@ function openNoteFromFab(note) {
     fab.style.opacity = '0';
     fab.style.transform = 'scale(0)';
 
-    // Force reflow
-    expandingCard.offsetHeight;
-
-    // Animate to full size (400ms)
+    // Animate to full size (350ms for snappier feel)
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             expandingCard.style.transition = 'transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), border-radius 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)';
