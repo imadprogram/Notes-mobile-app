@@ -1,0 +1,31 @@
+{
+    "expo": {
+        "name": "Notees",
+        "slug": "notees-mobile",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./app/fountain-pen-close-up.png",
+        "userInterfaceStyle": "dark",
+        "splash": {
+            "image": "./app/fountain-pen-close-up.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#FFD600"
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./app/fountain-pen-close-up.png",
+                "backgroundColor": "#FFD600"
+            },
+            "package": "com.imadprogram.notees"
+        },
+        "web": {
+            "favicon": "./app/fountain-pen-close-up.png"
+        }
+    }
+}
